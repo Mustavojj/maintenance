@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja TON - Maintenance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: white;
+        }
+        
+        .maintenance-card {
+            background: #111111;
+            border-radius: 24px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            border: 2px solid #1e40af;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulseLogo 3s infinite ease-in-out;
+        }
+        
+        @keyframes pulseLogo {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 20px rgba(30, 64, 175, 0.6));
+            border-radius: 0;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #3b82f6;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            border: 1.5px solid rgba(245, 158, 11, 0.3);
+            animation: statusPulse 2s infinite;
+        }
+        
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .message {
+            background: rgba(30, 64, 175, 0.1);
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1.5px solid rgba(30, 64, 175, 0.2);
+            text-align: left;
+        }
+        
+        .message h2 {
+            font-size: 1.3rem;
+            color: white;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .message h2 i {
+            color: #3b82f6;
+        }
+        
+        .message p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        .feature i {
+            color: #10b981;
+            font-size: 0.85rem;
+        }
+        
+        .channel-btn {
+            background: linear-gradient(135deg, #1e40af, #1d4ed8);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            padding: 18px;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            transition: all 0.3s;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
+        }
+        
+        .channel-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(30, 64, 175, 0.6);
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+        }
+        
+        .channel-btn i {
+            font-size: 1.2rem;
+        }
+        
+        .hint {
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 480px) {
+            .maintenance-card {
+                padding: 30px 25px;
+                max-width: 350px;
+            }
+            
+            .logo-container {
+                width: 100px;
+                height: 100px;
+            }
+            
+            h1 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="maintenance-card">
+        <div class="logo-container">
+            <img src="https://i.ibb.co/GvWFRrnp/ninja.png" 
+                 alt="Ninja TON" 
+                 class="logo"
+                 oncontextmenu="return false;" 
+                 ondragstart="return false;">
+        </div>
+        
+        <h1>NINJA TON</h1>
+        <div class="status-badge">MAINTENANCE MODE</div>
+        
+        <div class="message">
+            <h2><i class="fas fa-tools"></i> Important Update</h2>
+            <p>We're performing a major update to improve performance and increase profits. New features and higher rewards are coming soon!</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Improved earning system</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Higher task rewards</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Enhanced user experience</span>
+                </div>
+            </div>
+        </div>
+        
+        <a href="https://t.me/NINJA_TONS" target="_blank" class="channel-btn">
+            <i class="fab fa-telegram-plane"></i>
+            Follow Official Channel
+        </a>
+        
+        <p class="hint">Stay updated for the launch announcement</p>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            });
+        });
+    </script>
+</body>
+  </html>
