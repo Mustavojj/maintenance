@@ -2,246 +2,338 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ninja TON - Maintenance</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>STAR Z - New App</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-user-select: none;
-            user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
-        
+
         body {
-            background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0a1a0f 0%, #0d2a1a 50%, #0a1a0f 100%);
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
-            color: white;
+            position: relative;
+            overflow-x: hidden;
         }
-        
-        .maintenance-card {
-            background: #111111;
-            border-radius: 24px;
-            padding: 40px 30px;
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(46, 204, 113, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 40px,
+                rgba(46, 204, 113, 0.03) 40px,
+                rgba(46, 204, 113, 0.03) 80px
+            );
+            pointer-events: none;
+            animation: moveStripes 20s linear infinite;
+        }
+
+        @keyframes moveStripes {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(80px, 80px); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
             width: 100%;
             max-width: 420px;
+            animation: fadeInUp 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: rgba(30, 50, 35, 0.75);
+            backdrop-filter: blur(20px);
+            border-radius: 48px;
+            padding: 40px 28px;
+            border: 1.5px solid rgba(46, 204, 113, 0.4);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(46, 204, 113, 0.1), 0 0 30px rgba(46, 204, 113, 0.2);
             text-align: center;
-            border: 2px solid #1e40af;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-            animation: fadeIn 0.6s ease-out;
+            transition: all 0.3s ease;
         }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+
+        .card:hover {
+            border-color: rgba(46, 204, 113, 0.7);
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(46, 204, 113, 0.3), 0 0 40px rgba(46, 204, 113, 0.3);
+            transform: translateY(-5px);
         }
-        
-        .logo-container {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 25px;
+
+        .icon-wrapper {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #2ecc71, #1e8449);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: pulseLogo 3s infinite ease-in-out;
+            margin: 0 auto 25px;
+            box-shadow: 0 0 30px rgba(46, 204, 113, 0.5), 0 10px 20px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite ease-in-out;
         }
-        
-        @keyframes pulseLogo {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 30px rgba(46, 204, 113, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 0 50px rgba(46, 204, 113, 0.8); }
+            100% { transform: scale(1); box-shadow: 0 0 30px rgba(46, 204, 113, 0.5); }
         }
-        
-        .logo {
+
+        .icon-wrapper i {
+            font-size: 48px;
+            color: white;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #2ecc71, #58d68d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(46, 204, 113, 0.2);
+            border: 1px solid rgba(46, 204, 113, 0.5);
+            border-radius: 100px;
+            padding: 6px 16px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #58d68d;
+            margin-bottom: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        .description {
+            color: #d5f5e3;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .description i {
+            color: #2ecc71;
+            margin: 0 4px;
+        }
+
+        .launch-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 18px 28px;
+            background: linear-gradient(135deg, #2ecc71, #1e8449);
+            border: none;
+            border-radius: 100px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px -5px rgba(46, 204, 113, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .launch-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 0 20px rgba(30, 64, 175, 0.6));
-            border-radius: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
         }
-        
-        h1 {
-            font-size: 2rem;
-            font-weight: 900;
-            color: #3b82f6;
-            margin-bottom: 10px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
+
+        .launch-btn:hover::before {
+            left: 100%;
         }
-        
-        .status-badge {
-            display: inline-block;
-            background: rgba(245, 158, 11, 0.15);
-            color: #fbbf24;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 25px;
-            border: 1.5px solid rgba(245, 158, 11, 0.3);
-            animation: statusPulse 2s infinite;
+
+        .launch-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px -5px rgba(46, 204, 113, 0.6);
         }
-        
-        @keyframes statusPulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
+
+        .launch-btn:active {
+            transform: translateY(0);
         }
-        
-        .message {
-            background: rgba(30, 64, 175, 0.1);
-            border-radius: 18px;
-            padding: 25px;
-            margin-bottom: 30px;
-            border: 1.5px solid rgba(30, 64, 175, 0.2);
-            text-align: left;
+
+        .launch-btn i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
         }
-        
-        .message h2 {
-            font-size: 1.3rem;
-            color: white;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+
+        .launch-btn:hover i {
+            transform: translateX(5px);
         }
-        
-        .message h2 i {
-            color: #3b82f6;
+
+        .info-box {
+            margin-top: 25px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 28px;
+            border: 1px solid rgba(46, 204, 113, 0.2);
         }
-        
-        .message p {
-            color: #cbd5e1;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-        
-        .features {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin: 20px 0;
-        }
-        
-        .feature {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #94a3b8;
-            font-size: 0.9rem;
-        }
-        
-        .feature i {
-            color: #10b981;
-            font-size: 0.85rem;
-        }
-        
-        .channel-btn {
-            background: linear-gradient(135deg, #1e40af, #1d4ed8);
-            color: white;
-            border: none;
-            border-radius: 16px;
-            padding: 18px;
-            font-size: 1rem;
-            font-weight: 800;
-            cursor: pointer;
+
+        .info-row {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            width: 100%;
-            transition: all 0.3s;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
+            gap: 20px;
+            flex-wrap: wrap;
         }
-        
-        .channel-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(30, 64, 175, 0.6);
-            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: #a9dfbf;
         }
-        
-        .channel-btn i {
-            font-size: 1.2rem;
+
+        .info-item i {
+            color: #2ecc71;
+            font-size: 0.9rem;
         }
-        
-        .hint {
-            color: #64748b;
-            font-size: 0.85rem;
-            margin-top: 20px;
-            font-weight: 500;
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #2ecc71, #58d68d, #2ecc71, transparent);
+            margin: 20px auto 15px;
+            border-radius: 2px;
         }
-        
+
         @media (max-width: 480px) {
-            .maintenance-card {
-                padding: 30px 25px;
-                max-width: 350px;
-            }
-            
-            .logo-container {
-                width: 100px;
-                height: 100px;
+            .card {
+                padding: 30px 20px;
             }
             
             h1 {
-                font-size: 1.7rem;
+                font-size: 2rem;
+            }
+            
+            .description {
+                font-size: 0.9rem;
+            }
+            
+            .launch-btn {
+                padding: 15px 24px;
+                font-size: 1rem;
+            }
+            
+            .icon-wrapper {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .icon-wrapper i {
+                font-size: 38px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .info-row {
+                flex-direction: column;
+                gap: 8px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="maintenance-card">
-        <div class="logo-container">
-            <img src="https://i.ibb.co/GvWFRrnp/ninja.png" 
-                 alt="Ninja TON" 
-                 class="logo"
-                 oncontextmenu="return false;" 
-                 ondragstart="return false;">
-        </div>
-        
-        <h1>NINJA TON</h1>
-        <div class="status-badge">MAINTENANCE MODE</div>
-        
-        <div class="message">
-            <h2><i class="fas fa-tools"></i> Important Update</h2>
-            <p>We're performing a major update to improve performance and increase profits. New features and higher rewards are coming soon!</p>
+    <div class="container">
+        <div class="card">
+            <div class="icon-wrapper">
+                <i class="fas fa-rocket"></i>
+            </div>
             
-            <div class="features">
-                <div class="feature">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Improved earning system</span>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Higher task rewards</span>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Enhanced user experience</span>
+            <h1>STAR Z IS LIVE</h1>
+            
+            <div class="badge">
+                <i class="fas fa-bolt"></i> NEW VERSION
+            </div>
+            
+            <p class="description">
+                <i class="fas fa-exclamation-triangle"></i> The previous app is no longer working.<br>
+                <strong>STAR Z</strong> is the new fully functional app.<br>
+                <i class="fas fa-gem"></i> Earn TON & STAR, complete tasks, invite friends!
+            </p>
+            
+            <a href="https://t.me/Strzzbot/stars?startapp=1891231976" class="launch-btn" target="_blank">
+                <span>LAUNCH STAR Z</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+            
+            <div class="divider"></div>
+            
+            <div class="info-box">
+                <div class="info-row">
+                    <div class="info-item">
+                        <i class="fas fa-coins"></i>
+                        <span>Earn Rewards</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Invite Friends</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-star"></i>
+                        <span>Get STAR</span>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <a href="https://t.me/NINJA_TONS" target="_blank" class="channel-btn">
-            <i class="fab fa-telegram-plane"></i>
-            Follow Official Channel
-        </a>
-        
-        <p class="hint">Stay updated for the launch announcement</p>
     </div>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.addEventListener('contextmenu', function(e) {
-                e.preventDefault();
-                return false;
-            });
-        });
-    </script>
 </body>
-  </html>
+</html>
